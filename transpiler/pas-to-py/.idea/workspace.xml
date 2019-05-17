@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f505160d-c961-41a8-ab5a-392d752e723f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.g4" beforeDir="false" afterPath="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.g4" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../antlr/target/" />
     <ignored path="$PROJECT_DIR$/../antlr/src/target/" />
@@ -27,22 +27,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="-165">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/examples/helloworld.pas">
+        <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.tokens">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/examples/helloworld.pas">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/AntlrParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+            <state relative-caret-position="285">
+              <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
               <folding>
                 <element signature="e#0#239#0" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -68,8 +77,8 @@
       <list>
         <option value="$PROJECT_DIR$/../antlr/pom.xml" />
         <option value="$PROJECT_DIR$/../antlr/paspy/pom.xml" />
-        <option value="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.g4" />
         <option value="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/AntlrParser.java" />
+        <option value="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.g4" />
       </list>
     </option>
   </component>
@@ -144,7 +153,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558013487055" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558100907393" />
     <property name="last_opened_file_path" value="$USER_HOME$/Pobrane/antlr-4.7.2-complete.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -169,7 +178,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.AntlrParser">
+  <component name="RunManager" selected="Pascal executable.pas-to-py">
     <configuration name="AntlrParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AntlrParser" />
       <module name="paspy" />
@@ -223,12 +232,20 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <configuration name="pas-to-py" type="#com.siberika.idea.pascal.run.PascalConfigurationType" factoryName="Pascal executable" temporary="true">
+      <method v="2">
+        <option name="PasPrepareRunBuild" enabled="true" />
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Maven.[]" />
       <item itemvalue="Application.AntlrParser" />
+      <item itemvalue="Pascal executable.pas-to-py" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Pascal executable.pas-to-py" />
         <item itemvalue="Application.AntlrParser" />
       </list>
     </recent_temporary>
@@ -245,12 +262,12 @@
       <updated>1558009112173</updated>
       <workItem from="1558009118881" duration="391000" />
       <workItem from="1558009556795" duration="1427000" />
-      <workItem from="1558011033591" duration="1911000" />
+      <workItem from="1558011033591" duration="3755000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3729000" />
+    <option name="totallyTimeSpent" value="5573000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1366" height="741" extended-state="6" />
@@ -262,10 +279,10 @@
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" sideWeight="0.49924242" weight="0.32901135" />
+      <window_info anchor="bottom" id="Messages" sideWeight="0.49848485" weight="0.32901135" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49848485" visible="true" weight="0.32901135" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49772727" visible="true" weight="0.32901135" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -274,7 +291,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50151515" side_tool="true" visible="true" weight="0.32901135" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5022727" side_tool="true" weight="0.32901135" />
       <window_info anchor="bottom" id="Tool Output" order="12" />
       <window_info anchor="bottom" id="ANTLR Preview" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -293,20 +310,10 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../antlr/pom.xml" />
-    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascalParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1260" />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.tokens">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/../antlr/paspy/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -315,17 +322,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/examples/helloworld.pas">
+    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascalLexer.tokens">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1320" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.tokens">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-165">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/AntlrParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+        <state relative-caret-position="285">
+          <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
           <folding>
             <element signature="e#0#239#0" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/examples/helloworld.pas">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
         </state>
       </provider>
     </entry>
