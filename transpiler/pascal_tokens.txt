@@ -1,0 +1,386 @@
+fragment A
+   : ('a' | 'A')
+   ;
+
+
+fragment B
+   : ('b' | 'B')
+   ;
+
+
+fragment C
+   : ('c' | 'C')
+   ;
+
+
+fragment D
+   : ('d' | 'D')
+   ;
+
+
+fragment E
+   : ('e' | 'E')
+   ;
+
+
+fragment F
+   : ('f' | 'F')
+   ;
+
+
+fragment G
+   : ('g' | 'G')
+   ;
+
+
+fragment H
+   : ('h' | 'H')
+   ;
+
+
+fragment I
+   : ('i' | 'I')
+   ;
+
+
+fragment J
+   : ('j' | 'J')
+   ;
+
+
+fragment K
+   : ('k' | 'K')
+   ;
+
+
+fragment L
+   : ('l' | 'L')
+   ;
+
+
+fragment M
+   : ('m' | 'M')
+   ;
+
+
+fragment N
+   : ('n' | 'N')
+   ;
+
+
+fragment O
+   : ('o' | 'O')
+   ;
+
+
+fragment P
+   : ('p' | 'P')
+   ;
+
+
+fragment Q
+   : ('q' | 'Q')
+   ;
+
+
+fragment R
+   : ('r' | 'R')
+   ;
+
+
+fragment S
+   : ('s' | 'S')
+   ;
+
+
+fragment T
+   : ('t' | 'T')
+   ;
+
+
+fragment U
+   : ('u' | 'U')
+   ;
+
+
+fragment V
+   : ('v' | 'V')
+   ;
+
+
+fragment W
+   : ('w' | 'W')
+   ;
+
+
+fragment X
+   : ('x' | 'X')
+   ;
+
+
+fragment Y
+   : ('y' | 'Y')
+   ;
+
+
+fragment Z
+   : ('z' | 'Z')
+   ;
+
+PROGRAM
+    : P R O G R A M
+    ;
+
+IDENT
+    : ('a' .. 'z' | 'A' .. 'Z') ('a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_')*
+    ;
+
+COMMENT1
+    : '(*' .*? '*)' -> skip
+    ;
+
+COMMENT2
+    : '{' .*? '}' -> skip
+    ;
+
+WHITESPACE
+    : [ \t\r\n] -> skip
+    ;
+
+TRUE
+    : T R U E
+    ;
+
+FALSE
+    : F A L S E
+    ;
+
+AND
+    : A N D
+    ;
+
+ARRAY
+    : A R R A Y
+    ;
+
+BEGIN
+    : B E G I N
+    ;
+
+END
+    : E N D
+    ;
+
+BOOLEAN
+    : B O O L E A N
+    ;
+
+CHR
+    : C H R
+    ;
+
+CONST
+    : C O N S T
+    ;
+
+DO
+    : D O 
+    ;
+
+DOWNTO
+    : D O W N T O
+    ;
+
+ELSE
+    : E L S E 
+    ;
+
+FOR
+    : F O R
+    ;
+
+FUNCTION
+    : F U N C T I O N
+    ;
+
+IF
+    : I F
+    ;
+
+IN
+    : I N
+    ;
+
+INTEGER
+    : I N T E G E R
+    ;
+
+NIL
+    : N I L
+    ;
+
+NOT
+    : N O T
+    ;
+
+OF
+    : O F
+    ;
+
+OR
+    : O R 
+    ;
+
+PROCEDURE
+    : P R O C E D U R E
+    ;
+
+REAL
+    : R E A L
+    ;
+
+SET
+    : S E T
+    ;
+
+THEN
+    : T H E N
+    ;
+
+TO
+    : T O
+    ;
+
+TYPE
+    : T Y P E
+    ;
+
+VAR
+    : V A R
+    ;
+
+WHILE
+    : W H I L E
+    ;
+
+WITH
+    : W I T H
+    ;
+
+PLUS
+    : '+'
+    ;
+
+MINUS
+    : '-'
+    ;
+
+STAR
+    : '*'
+    ;
+
+SLASH
+   : '/'
+   ;
+
+
+ASSIGN
+   : ':='
+   ;
+
+
+COMMA
+   : ','
+   ;
+
+
+COLON
+   : ':'
+   ;
+
+
+EQUAL
+   : '='
+   ;
+
+
+NOT_EQUAL
+   : '<>'
+   ;
+
+LT
+   : '<'
+   ;
+
+LE
+   : '<='
+   ;
+
+GE
+   : '>='
+   ;
+
+GT
+   : '>'
+   ;
+
+DOT
+    : '.'
+    ;
+
+LPAREN
+    : '('
+    ;
+
+RPAREN
+    : ')'
+    ;
+
+SEMICOLON
+    : ';'
+    ;
+
+LBRACK
+    : '['
+    ;
+
+RBRACK
+    : ']'
+    ;
+
+LBRACK2
+    : '(.'
+    ;
+
+RBRACK2
+    : '.)'
+    ;
+
+LCURLY
+    : '{'
+    ;
+
+RCURLY
+    : '}'
+    ;
+
+STRING
+    : S T R I N G
+
+    ;
+
+STR_LITERAL
+    : '\' ('\'\'' | ~ ('\''))* '\''
+    ;
+
+NUM_INT
+    : ('0' .. '9') +
+    ;
+
+NUM_REAL
+    : ('0' .. '9') + (('.' ('0' .. '9') + (EXPONENT)?)? | EXPONENT)
+
+fragment EXPONENT
+    : ('e') ('+' | '-')? ('0' .. '9') +
+    ;
+
