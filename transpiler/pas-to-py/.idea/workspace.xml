@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f505160d-c961-41a8-ab5a-392d752e723f" name="Default Changelist" comment="" />
+    <list default="true" id="f505160d-c961-41a8-ab5a-392d752e723f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../antlr/paspy/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../antlr/paspy/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/AntlrParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/AntlrParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.g4" beforeDir="false" afterPath="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascalBaseListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascalLexer.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascalLexer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascalLexer.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascalListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascalParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/../antlr/target/" />
     <ignored path="$PROJECT_DIR$/../antlr/src/target/" />
     <ignored path="$PROJECT_DIR$/../antlr/paspy/target/" />
@@ -16,31 +29,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../antlr/paspy/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+            <state relative-caret-position="225">
+              <caret line="15" column="58" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1830">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.tokens">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/examples/helloworld.pas">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="1875">
+              <caret line="125" column="4" lean-forward="true" selection-start-line="125" selection-start-column="4" selection-end-line="125" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -48,12 +47,53 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/AntlrParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+            <state relative-caret-position="169">
+              <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
               <folding>
-                <element signature="e#0#239#0" expanded="true" />
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascalBaseListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#857#1523#0" />
+                <element signature="e#1612#1741#0" />
+                <element signature="e#1880#2058#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6">
+              <caret line="1717" column="50" lean-forward="true" selection-start-line="1717" selection-start-column="50" selection-end-line="1717" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascalListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/examples/helloworld.pas">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -74,9 +114,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/../antlr/pom.xml" />
+        <option value="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascalTokens.g4" />
+        <option value="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.g4" />
         <option value="$PROJECT_DIR$/../antlr/paspy/pom.xml" />
         <option value="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/AntlrParser.java" />
-        <option value="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.g4" />
+        <option value="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/PyHandler.java" />
+        <option value="$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascalBaseListener.java" />
       </list>
     </option>
   </component>
@@ -87,6 +130,12 @@
         <option name="importAutomatically" value="true" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="-1" />
@@ -106,6 +155,40 @@
               <item name="pas-to-py" type="b2602c69:ProjectViewProjectNode" />
               <item name="antlr" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="pas-to-py" type="b2602c69:ProjectViewProjectNode" />
+              <item name="antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="paspy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pas-to-py" type="b2602c69:ProjectViewProjectNode" />
+              <item name="antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="paspy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pas-to-py" type="b2602c69:ProjectViewProjectNode" />
+              <item name="antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="paspy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pas-to-py" type="b2602c69:ProjectViewProjectNode" />
+              <item name="antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="paspy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="antrl4" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pas-to-py" type="b2602c69:ProjectViewProjectNode" />
+              <item name="antlr" type="462c0819:PsiDirectoryNode" />
+              <item name="paspy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="examples" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -117,13 +200,14 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558118141481" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560791002412" />
     <property name="last_opened_file_path" value="$USER_HOME$/Pobrane/antlr-4.7.2-complete.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -142,7 +226,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Pascal executable.pas-to-py">
+  <component name="RunManager" selected="Application.AntlrParser">
     <configuration name="AntlrParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AntlrParser" />
       <module name="paspy" />
@@ -203,14 +287,14 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Maven.[]" />
       <item itemvalue="Application.AntlrParser" />
+      <item itemvalue="Maven.[]" />
       <item itemvalue="Pascal executable.pas-to-py" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Pascal executable.pas-to-py" />
         <item itemvalue="Application.AntlrParser" />
+        <item itemvalue="Pascal executable.pas-to-py" />
       </list>
     </recent_temporary>
   </component>
@@ -227,23 +311,58 @@
       <workItem from="1558009118881" duration="391000" />
       <workItem from="1558009556795" duration="1427000" />
       <workItem from="1558011033591" duration="4510000" />
+      <workItem from="1559051654658" duration="458000" />
+      <workItem from="1560777163788" duration="10470000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6328000" />
+    <option name="totallyTimeSpent" value="17256000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1366" height="741" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25757575" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2659091" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" sideWeight="0.49848485" weight="0.32901135" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49772727" visible="true" weight="0.32901135" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32901135" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32901135" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5022727" side_tool="true" weight="0.32901135" />
+      <window_info anchor="bottom" id="Tool Output" order="12" weight="0.32901135" />
+      <window_info anchor="bottom" x="0" y="290" width="1330" height="205" id="ANTLR Preview" order="13" weight="0.32901135" />
+      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.49848485" weight="0.32901135" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Maven" order="8" weight="0.32954547" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2659091" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49772727" weight="0.32901135" />
@@ -257,17 +376,18 @@
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32901135" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5022727" side_tool="true" weight="0.32901135" />
       <window_info anchor="bottom" id="Tool Output" order="12" weight="0.32901135" />
-      <window_info anchor="bottom" x="0" y="290" width="1330" height="205" id="ANTLR Preview" order="13" visible="true" weight="0.32901135" />
+      <window_info anchor="bottom" x="0" y="290" width="1330" height="205" id="ANTLR Preview" order="13" weight="0.32901135" />
+      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.49848485" weight="0.32901135" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Maven" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Database" order="8" />
-    </layout>
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Maven" order="8" weight="0.32954547" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -279,43 +399,111 @@
         <state relative-caret-position="-1260" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../antlr/paspy/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascalLexer.tokens">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1320" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.tokens">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-i386!/java.base/java/util/function/IntConsumer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascalTokens.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1185">
+          <caret line="79" column="10" selection-start-line="79" selection-start-column="10" selection-end-line="79" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.interp">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../antlr/paspy/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="58" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascalListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/PyHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+          <folding>
+            <element signature="e#354#355#0" expanded="true" />
+            <element signature="e#389#390#0" expanded="true" />
+            <element signature="e#366#367#0" expanded="true" />
+            <element signature="e#398#399#0" expanded="true" />
+            <element signature="e#426#427#0" expanded="true" />
+            <element signature="e#462#463#0" expanded="true" />
+            <element signature="e#496#497#0" expanded="true" />
+            <element signature="e#528#529#0" expanded="true" />
+            <element signature="e#500#501#0" expanded="true" />
+            <element signature="e#537#538#0" expanded="true" />
+            <element signature="e#628#629#0" expanded="true" />
+            <element signature="e#660#661#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/AntlrParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+        <state relative-caret-position="169">
+          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
           <folding>
-            <element signature="e#0#239#0" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/examples/helloworld.pas">
+    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="1875">
+          <caret line="125" column="4" lean-forward="true" selection-start-line="125" selection-start-column="4" selection-end-line="125" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.g4">
+    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1830">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="6">
+          <caret line="1717" column="50" lean-forward="true" selection-start-line="1717" selection-start-column="50" selection-end-line="1717" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/examples/helloworld.pas">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../antlr/paspy/src/main/antrl4/pascalBaseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#857#1523#0" />
+            <element signature="e#1612#1741#0" />
+            <element signature="e#1880#2058#0" />
+          </folding>
         </state>
       </provider>
     </entry>
