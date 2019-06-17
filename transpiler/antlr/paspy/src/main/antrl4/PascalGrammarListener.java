@@ -147,56 +147,6 @@ public interface PascalGrammarListener extends ParseTreeListener {
 	 */
 	void exitType(PascalGrammar.TypeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link PascalGrammar#scalarType}.
-	 * @param ctx the parse tree
-	 */
-	void enterScalarType(PascalGrammar.ScalarTypeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PascalGrammar#scalarType}.
-	 * @param ctx the parse tree
-	 */
-	void exitScalarType(PascalGrammar.ScalarTypeContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link PascalGrammar#typeIdentifier}.
-	 * @param ctx the parse tree
-	 */
-	void enterTypeIdentifier(PascalGrammar.TypeIdentifierContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PascalGrammar#typeIdentifier}.
-	 * @param ctx the parse tree
-	 */
-	void exitTypeIdentifier(PascalGrammar.TypeIdentifierContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link PascalGrammar#stringtype}.
-	 * @param ctx the parse tree
-	 */
-	void enterStringtype(PascalGrammar.StringtypeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PascalGrammar#stringtype}.
-	 * @param ctx the parse tree
-	 */
-	void exitStringtype(PascalGrammar.StringtypeContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link PascalGrammar#arrayType}.
-	 * @param ctx the parse tree
-	 */
-	void enterArrayType(PascalGrammar.ArrayTypeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PascalGrammar#arrayType}.
-	 * @param ctx the parse tree
-	 */
-	void exitArrayType(PascalGrammar.ArrayTypeContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link PascalGrammar#typeList}.
-	 * @param ctx the parse tree
-	 */
-	void enterTypeList(PascalGrammar.TypeListContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PascalGrammar#typeList}.
-	 * @param ctx the parse tree
-	 */
-	void exitTypeList(PascalGrammar.TypeListContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link PascalGrammar#variableDeclarationPart}.
 	 * @param ctx the parse tree
 	 */
@@ -257,26 +207,6 @@ public interface PascalGrammarListener extends ParseTreeListener {
 	 */
 	void exitFormalParameterList(PascalGrammar.FormalParameterListContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link PascalGrammar#formalParameterSection}.
-	 * @param ctx the parse tree
-	 */
-	void enterFormalParameterSection(PascalGrammar.FormalParameterSectionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PascalGrammar#formalParameterSection}.
-	 * @param ctx the parse tree
-	 */
-	void exitFormalParameterSection(PascalGrammar.FormalParameterSectionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link PascalGrammar#parameterGroup}.
-	 * @param ctx the parse tree
-	 */
-	void enterParameterGroup(PascalGrammar.ParameterGroupContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PascalGrammar#parameterGroup}.
-	 * @param ctx the parse tree
-	 */
-	void exitParameterGroup(PascalGrammar.ParameterGroupContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link PascalGrammar#identifierList}.
 	 * @param ctx the parse tree
 	 */
@@ -296,16 +226,6 @@ public interface PascalGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFunctionDeclaration(PascalGrammar.FunctionDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link PascalGrammar#resultType}.
-	 * @param ctx the parse tree
-	 */
-	void enterResultType(PascalGrammar.ResultTypeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PascalGrammar#resultType}.
-	 * @param ctx the parse tree
-	 */
-	void exitResultType(PascalGrammar.ResultTypeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link PascalGrammar#statement}.
 	 * @param ctx the parse tree
@@ -427,26 +347,6 @@ public interface PascalGrammarListener extends ParseTreeListener {
 	 */
 	void exitFactor(PascalGrammar.FactorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link PascalGrammar#unsignedConstant}.
-	 * @param ctx the parse tree
-	 */
-	void enterUnsignedConstant(PascalGrammar.UnsignedConstantContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PascalGrammar#unsignedConstant}.
-	 * @param ctx the parse tree
-	 */
-	void exitUnsignedConstant(PascalGrammar.UnsignedConstantContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link PascalGrammar#functionDesignator}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunctionDesignator(PascalGrammar.FunctionDesignatorContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PascalGrammar#functionDesignator}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunctionDesignator(PascalGrammar.FunctionDesignatorContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link PascalGrammar#parameterList}.
 	 * @param ctx the parse tree
 	 */
@@ -466,26 +366,6 @@ public interface PascalGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitProcedureStatement(PascalGrammar.ProcedureStatementContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link PascalGrammar#actualParameter}.
-	 * @param ctx the parse tree
-	 */
-	void enterActualParameter(PascalGrammar.ActualParameterContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PascalGrammar#actualParameter}.
-	 * @param ctx the parse tree
-	 */
-	void exitActualParameter(PascalGrammar.ActualParameterContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link PascalGrammar#parameterwidth}.
-	 * @param ctx the parse tree
-	 */
-	void enterParameterwidth(PascalGrammar.ParameterwidthContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PascalGrammar#parameterwidth}.
-	 * @param ctx the parse tree
-	 */
-	void exitParameterwidth(PascalGrammar.ParameterwidthContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link PascalGrammar#emptyStatement}.
 	 * @param ctx the parse tree

@@ -17,7 +17,8 @@ public class PaspyTranspiler {
 
     public static void main(String[] args) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("program.py"));
-        String fileName = "/home/hushmans/Dokumenty/studia/s6/kompilatooor/kompilatory/transpiler/antlr/paspy/src/main/examples/example.pas";
+        String fileName = "/home/hushmans/Dokumenty/studia/s6/kompilatooor/kompilatory/transpiler/antlr/" +
+                "paspy/src/main/examples/helloworld.pas";
         File input = new File(fileName);
         InputStream inputStream = new FileInputStream(input);
         tokens.pascalTokens tokenizer = new tokens.pascalTokens(fromStream(inputStream));

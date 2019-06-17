@@ -3,24 +3,27 @@
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
-
 import java.io.*;
-import java.util.List;
 
-/**
- * This class provides an empty implementation of {@link PascalGrammarListener},
- * which can be extended to create a listener which only needs to handle a subset
- * of the available methods.
- */
+
 public class PascalGrammarBaseListener implements PascalGrammarListener {
 
 	private BufferedWriter bufferedWriter;
+	int tabs = 0; //tab counter for python ident
+	int prevTabs=0;
 
 	public PascalGrammarBaseListener(BufferedWriter bufferedWriter) {
 		this.bufferedWriter = bufferedWriter;
 	}
 
 	private void writeBuf(String s) {
+		for(int i =0; i<tabs; i++){
+			try {
+				bufferedWriter.write("\t");
+			} catch(IOException e){
+				e.printStackTrace();
+			}
+		}
 		try {
 			bufferedWriter.write(s);
 		}catch(IOException e) {
@@ -28,272 +31,76 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterProgram(PascalGrammar.ProgramContext ctx) {
+
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitProgram(PascalGrammar.ProgramContext ctx) {
 		writeBuf("\nif __name__ == \"__main__\":\n");
-		writeBuf("\t"+ctx.programHeading().identifier().IDENT().getSymbol().getText()+"(");
-		PascalGrammar.IdentifierListContext list = ctx.programHeading().identifierList();
-		if(list != null) {
-			for(int i=0; i<list.identifier().size()-1; i++){
-				writeBuf(list.identifier(i).IDENT().getSymbol().getText()+", ");
-			}
-			writeBuf(list.identifier(list.identifier().size()-1).IDENT().getSymbol().getText());
-		}
-		writeBuf(")");
+		tabs++;
+		writeBuf(ctx.programHeading().identifier().IDENT().getSymbol().getText()+"():");
+		tabs=prevTabs;
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterProgramHeading(PascalGrammar.ProgramHeadingContext ctx) {
 		writeBuf("def "+ctx.identifier().IDENT().getSymbol().getText());
-		PascalGrammar.IdentifierListContext list = ctx.identifierList();
-		if(list != null) {
-			writeBuf("(");
-			for(int i=0; i<list.identifier().size()-1; i++){
-				writeBuf(list.identifier(i).IDENT().getSymbol().getText()+", ");
-			}
-			writeBuf(list.identifier(list.identifier().size()-1).IDENT().getSymbol().getText()+")");
-		}
-		writeBuf(":\n");
+		writeBuf("():\n");
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitProgramHeading(PascalGrammar.ProgramHeadingContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterIdentifier(PascalGrammar.IdentifierContext ctx) {
 
-	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitIdentifier(PascalGrammar.IdentifierContext ctx) {
+	@Override public void enterIdentifier(PascalGrammar.IdentifierContext ctx) { }
 
+	@Override public void exitIdentifier(PascalGrammar.IdentifierContext ctx) { }
+
+	@Override public void enterBlock(PascalGrammar.BlockContext ctx) {
+		tabs++;
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterBlock(PascalGrammar.BlockContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitBlock(PascalGrammar.BlockContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterConstantDefinitionPart(PascalGrammar.ConstantDefinitionPartContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitConstantDefinitionPart(PascalGrammar.ConstantDefinitionPartContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterConstantDefinition(PascalGrammar.ConstantDefinitionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitConstantDefinition(PascalGrammar.ConstantDefinitionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterConstant(PascalGrammar.ConstantContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitConstant(PascalGrammar.ConstantContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterUnsignedNumber(PascalGrammar.UnsignedNumberContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitUnsignedNumber(PascalGrammar.UnsignedNumberContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterUnsignedInteger(PascalGrammar.UnsignedIntegerContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitUnsignedInteger(PascalGrammar.UnsignedIntegerContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterUnsignedReal(PascalGrammar.UnsignedRealContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitUnsignedReal(PascalGrammar.UnsignedRealContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterSign(PascalGrammar.SignContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitSign(PascalGrammar.SignContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterBool(PascalGrammar.BoolContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitBool(PascalGrammar.BoolContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterString(PascalGrammar.StringContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitString(PascalGrammar.StringContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterType(PascalGrammar.TypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitType(PascalGrammar.TypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterScalarType(PascalGrammar.ScalarTypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitScalarType(PascalGrammar.ScalarTypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterTypeIdentifier(PascalGrammar.TypeIdentifierContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTypeIdentifier(PascalGrammar.TypeIdentifierContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterStringtype(PascalGrammar.StringtypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitStringtype(PascalGrammar.StringtypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterArrayType(PascalGrammar.ArrayTypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitArrayType(PascalGrammar.ArrayTypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterTypeList(PascalGrammar.TypeListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTypeList(PascalGrammar.TypeListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterVariableDeclarationPart(PascalGrammar.VariableDeclarationPartContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitVariableDeclarationPart(PascalGrammar.VariableDeclarationPartContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -360,30 +167,6 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFormalParameterSection(PascalGrammar.FormalParameterSectionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFormalParameterSection(PascalGrammar.FormalParameterSectionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterParameterGroup(PascalGrammar.ParameterGroupContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitParameterGroup(PascalGrammar.ParameterGroupContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterIdentifierList(PascalGrammar.IdentifierListContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -403,18 +186,6 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFunctionDeclaration(PascalGrammar.FunctionDeclarationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterResultType(PascalGrammar.ResultTypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitResultType(PascalGrammar.ResultTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -456,13 +227,7 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariable(PascalGrammar.VariableContext ctx) {
-		if(ctx.identifier()!=null){
-			for(int i=0; i<ctx.identifier().size()-1; i++){
-
-			}
-		}
-	}
+	@Override public void enterVariable(PascalGrammar.VariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -570,32 +335,7 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnsignedConstant(PascalGrammar.UnsignedConstantContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitUnsignedConstant(PascalGrammar.UnsignedConstantContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterFunctionDesignator(PascalGrammar.FunctionDesignatorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFunctionDesignator(PascalGrammar.FunctionDesignatorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterParameterList(PascalGrammar.ParameterListContext ctx) {
-	}
+	@Override public void enterParameterList(PascalGrammar.ParameterListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -608,15 +348,16 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void enterProcedureStatement(PascalGrammar.ProcedureStatementContext ctx) {
-		if(ctx.identifier().IDENT().getSymbol().getText().equals("write")){
-			writeBuf("\tprint");
-			writeBuf("(");
+		if(ctx.identifier().IDENT().getSymbol().getText().equals("write") ||
+				ctx.identifier().IDENT().getSymbol().getText().equals("writeln")){
+			writeBuf("print(");
 		} else if (ctx.identifier().IDENT().getSymbol().getText().equals("readln")) {
 		}
 		else {
-			writeBuf("\t"+ctx.identifier().IDENT().getSymbol().getText());
-			writeBuf("(");
+			writeBuf("\n"+ctx.identifier().IDENT().getSymbol().getText()+"(");
 		}
+		prevTabs=tabs;
+		tabs=0;
 	}
 	/**
 	 * {@inheritDoc}
@@ -628,30 +369,6 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 			writeBuf(")\n");
 		}
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterActualParameter(PascalGrammar.ActualParameterContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitActualParameter(PascalGrammar.ActualParameterContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterParameterwidth(PascalGrammar.ParameterwidthContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitParameterwidth(PascalGrammar.ParameterwidthContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

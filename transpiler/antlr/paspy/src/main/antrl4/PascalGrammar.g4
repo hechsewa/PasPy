@@ -7,7 +7,7 @@ program
    ;
 
 programHeading
-   : PROGRAM identifier (LPAREN identifierList RPAREN)? SEMI
+   : PROGRAM identifier SEMI
    ;
 
 identifier
@@ -61,32 +61,7 @@ string
    ;
 
 type
-   : scalarType
-   | typeIdentifier
-   | stringtype
-   | arrayType
-   ;
-
-scalarType
-   : LPAREN identifierList RPAREN
-   ;
-
-typeIdentifier
-   : identifier
-   | (CHAR | BOOLEAN | INTEGER | REAL | STRING)
-   ;
-
-stringtype
-   : STRING LBRACK (identifier | unsignedNumber) RBRACK
-   ;
-
-arrayType
-   : ARRAY LBRACK typeList RBRACK OF type
-   | ARRAY LBRACK2 typeList RBRACK2 OF type
-   ;
-
-typeList
-   : type (COMMA type)*
+   : (CHAR | BOOLEAN | INTEGER | REAL | STRING)
    ;
 
 variableDeclarationPart
@@ -111,18 +86,7 @@ procedureDeclaration
    ;
 
 formalParameterList
-   : LPAREN formalParameterSection (SEMI formalParameterSection)* RPAREN
-   ;
-
-formalParameterSection
-   : parameterGroup
-   | VAR parameterGroup
-   | FUNCTION parameterGroup
-   | PROCEDURE parameterGroup
-   ;
-
-parameterGroup
-   : identifierList COLON typeIdentifier
+   : LPAREN identifierList COLON type RPAREN
    ;
 
 identifierList
@@ -130,11 +94,7 @@ identifierList
    ;
 
 functionDeclaration
-   : FUNCTION identifier (formalParameterList)? COLON resultType SEMI block
-   ;
-
-resultType
-   : typeIdentifier
+   : FUNCTION identifier (formalParameterList)? COLON type SEMI block
    ;
 
 statement
@@ -153,7 +113,7 @@ assignmentStatement
    ;
 
 variable
-   : (identifier) (LBRACK expression (COMMA expression)* RBRACK | LBRACK2 expression (COMMA expression)* RBRACK2 | DOT identifier)*
+   : (identifier) (expression (COMMA expression)*)*
    ;
 
 expression
@@ -196,36 +156,18 @@ signedFactor
 
 factor
    : variable
-   | LPAREN expression RPAREN
-   | functionDesignator
-   | unsignedConstant
-   | bool
-   ;
-
-unsignedConstant
-   : unsignedNumber
+   | unsignedNumber
    | string
+   | bool
    | NIL
    ;
 
-functionDesignator
-   : identifier LPAREN parameterList RPAREN
-   ;
-
 parameterList
-   : actualParameter (COMMA actualParameter)*
+   : expression (COMMA expression)*
    ;
 
 procedureStatement
    : identifier (LPAREN parameterList RPAREN)?
-   ;
-
-actualParameter
-   : expression parameterwidth*
-   ;
-
-parameterwidth
-   : COLON expression
    ;
 
 emptyStatement
