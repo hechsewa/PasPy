@@ -4,6 +4,7 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import java.io.*;
+import java.util.List;
 
 
 public class PascalGrammarBaseListener implements PascalGrammarListener {
@@ -49,7 +50,8 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 
 	@Override public void exitProgramHeading(PascalGrammar.ProgramHeadingContext ctx) { }
 
-	@Override public void enterIdentifier(PascalGrammar.IdentifierContext ctx) { }
+	@Override public void enterIdentifier(PascalGrammar.IdentifierContext ctx) {
+	}
 
 	@Override public void exitIdentifier(PascalGrammar.IdentifierContext ctx) { }
 
@@ -57,11 +59,18 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 		tabs++;
 	}
 
-	@Override public void exitBlock(PascalGrammar.BlockContext ctx) { }
+	@Override public void exitBlock(PascalGrammar.BlockContext ctx) {
+		tabs=prevTabs;
+	}
 
-	@Override public void enterConstantDefinitionPart(PascalGrammar.ConstantDefinitionPartContext ctx) { }
+	@Override public void enterConstantDefinitionPart(PascalGrammar.ConstantDefinitionPartContext ctx) {
+		tabs++;
 
-	@Override public void exitConstantDefinitionPart(PascalGrammar.ConstantDefinitionPartContext ctx) { }
+	}
+
+	@Override public void exitConstantDefinitionPart(PascalGrammar.ConstantDefinitionPartContext ctx) {
+		tabs=prevTabs;
+	}
 
 	@Override public void enterConstantDefinition(PascalGrammar.ConstantDefinitionContext ctx) { }
 
@@ -71,49 +80,86 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 
 	@Override public void exitConstant(PascalGrammar.ConstantContext ctx) { }
 
-	@Override public void enterUnsignedNumber(PascalGrammar.UnsignedNumberContext ctx) { }
+	@Override public void enterUnsignedNumber(PascalGrammar.UnsignedNumberContext ctx) {
+	}
 
 	@Override public void exitUnsignedNumber(PascalGrammar.UnsignedNumberContext ctx) { }
 
-	@Override public void enterUnsignedInteger(PascalGrammar.UnsignedIntegerContext ctx) { }
+	@Override public void enterUnsignedInteger(PascalGrammar.UnsignedIntegerContext ctx) {
+	}
 
 	@Override public void exitUnsignedInteger(PascalGrammar.UnsignedIntegerContext ctx) { }
 
-	@Override public void enterUnsignedReal(PascalGrammar.UnsignedRealContext ctx) { }
+	@Override public void enterUnsignedReal(PascalGrammar.UnsignedRealContext ctx) {
+	}
 
 	@Override public void exitUnsignedReal(PascalGrammar.UnsignedRealContext ctx) { }
 
-	@Override public void enterSign(PascalGrammar.SignContext ctx) { }
+	@Override public void enterSign(PascalGrammar.SignContext ctx) {
+	}
 
 	@Override public void exitSign(PascalGrammar.SignContext ctx) { }
 
-	@Override public void enterBool(PascalGrammar.BoolContext ctx) { }
+	@Override public void enterBool(PascalGrammar.BoolContext ctx) {
+	}
 
 	@Override public void exitBool(PascalGrammar.BoolContext ctx) { }
 
-	@Override public void enterString(PascalGrammar.StringContext ctx) { }
+	@Override public void enterString(PascalGrammar.StringContext ctx) {
+	}
 
 	@Override public void exitString(PascalGrammar.StringContext ctx) { }
 
-	@Override public void enterType(PascalGrammar.TypeContext ctx) { }
+	@Override public void enterType(PascalGrammar.TypeContext ctx) {
+	}
 
 	@Override public void exitType(PascalGrammar.TypeContext ctx) { }
 
-	@Override public void enterVariableDeclarationPart(PascalGrammar.VariableDeclarationPartContext ctx) { }
+	@Override public void enterVariableDeclarationPart(PascalGrammar.VariableDeclarationPartContext ctx){
+	}
 
-	@Override public void exitVariableDeclarationPart(PascalGrammar.VariableDeclarationPartContext ctx) { }
+	@Override public void exitVariableDeclarationPart(PascalGrammar.VariableDeclarationPartContext ctx) {
+		writeBuf("\n");
+	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariableDeclaration(PascalGrammar.VariableDeclarationContext ctx) { }
+	@Override public void enterVariableDeclaration(PascalGrammar.VariableDeclarationContext ctx) {
+		tabs++;
+		prevTabs=tabs;
+		List<PascalGrammar.IdentifierContext> list = ctx.identifierList().identifier();
+		if(list != null){
+			if(ctx.type().BOOLEAN() != null){
+				writeBuf(ctx.type().BOOLEAN().getSymbol().getText());
+			} else if (ctx.type().CHAR() != null) {
+				writeBuf(ctx.type().CHAR().getSymbol().getText());
+			} else if (ctx.type().INTEGER() != null) {
+				writeBuf(ctx.type().INTEGER().getSymbol().getText());
+			} else if (ctx.type().REAL() != null) {
+				writeBuf(ctx.type().REAL().getSymbol().getText());
+			} else if (ctx.type().STRING() != null) {
+				writeBuf(ctx.type().STRING().getSymbol().getText());
+			}
+			tabs=0;
+			writeBuf(" ");
+			//get all elements
+			for(int i=0; i<list.size()-1; i++){
+				writeBuf(ctx.identifierList().identifier(i).IDENT().getSymbol().getText()+", ");
+			}
+			writeBuf(ctx.identifierList().identifier(list.size()-1).IDENT().getSymbol().getText());
+		}
+	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableDeclaration(PascalGrammar.VariableDeclarationContext ctx) { }
+	@Override public void exitVariableDeclaration(PascalGrammar.VariableDeclarationContext ctx) {
+		tabs=prevTabs;
+		writeBuf("\n");
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -341,7 +387,8 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParameterList(PascalGrammar.ParameterListContext ctx) { }
+	@Override public void exitParameterList(PascalGrammar.ParameterListContext ctx) {
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -354,7 +401,7 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 		} else if (ctx.identifier().IDENT().getSymbol().getText().equals("readln")) {
 		}
 		else {
-			writeBuf("\n"+ctx.identifier().IDENT().getSymbol().getText()+"(");
+			writeBuf(ctx.identifier().IDENT().getSymbol().getText()+"(");
 		}
 		prevTabs=tabs;
 		tabs=0;
@@ -368,6 +415,7 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 		if(!ctx.identifier().IDENT().getSymbol().getText().equals("readln")) {
 			writeBuf(")\n");
 		}
+		tabs = prevTabs;
 	}
 	/**
 	 * {@inheritDoc}
