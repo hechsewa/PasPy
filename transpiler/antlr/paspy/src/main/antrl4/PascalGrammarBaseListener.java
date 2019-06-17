@@ -5,6 +5,7 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.io.*;
+import java.util.List;
 
 /**
  * This class provides an empty implementation of {@link PascalGrammarListener},
@@ -79,13 +80,17 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIdentifier(PascalGrammar.IdentifierContext ctx) { }
+	@Override public void enterIdentifier(PascalGrammar.IdentifierContext ctx) {
+
+	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIdentifier(PascalGrammar.IdentifierContext ctx) { }
+	@Override public void exitIdentifier(PascalGrammar.IdentifierContext ctx) {
+
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -451,7 +456,13 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariable(PascalGrammar.VariableContext ctx) { }
+	@Override public void enterVariable(PascalGrammar.VariableContext ctx) {
+		if(ctx.identifier()!=null){
+			for(int i=0; i<ctx.identifier().size()-1; i++){
+
+			}
+		}
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -583,7 +594,8 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParameterList(PascalGrammar.ParameterListContext ctx) { }
+	@Override public void enterParameterList(PascalGrammar.ParameterListContext ctx) {
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -595,13 +607,27 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProcedureStatement(PascalGrammar.ProcedureStatementContext ctx) { }
+	@Override public void enterProcedureStatement(PascalGrammar.ProcedureStatementContext ctx) {
+		if(ctx.identifier().IDENT().getSymbol().getText().equals("write")){
+			writeBuf("\tprint");
+			writeBuf("(");
+		} else if (ctx.identifier().IDENT().getSymbol().getText().equals("readln")) {
+		}
+		else {
+			writeBuf("\t"+ctx.identifier().IDENT().getSymbol().getText());
+			writeBuf("(");
+		}
+	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitProcedureStatement(PascalGrammar.ProcedureStatementContext ctx) { }
+	@Override public void exitProcedureStatement(PascalGrammar.ProcedureStatementContext ctx) {
+		if(!ctx.identifier().IDENT().getSymbol().getText().equals("readln")) {
+			writeBuf(")\n");
+		}
+	}
 	/**
 	 * {@inheritDoc}
 	 *
