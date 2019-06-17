@@ -1,4 +1,4 @@
-parser grammar pascal;
+parser grammar PascalGrammar;
 
 options { tokenVocab=pascalTokens; }
 
@@ -187,7 +187,6 @@ multiplicativeoperator
    : STAR
    | SLASH
    | DIV
-   | MOD
    | AND
    ;
 
@@ -200,7 +199,6 @@ factor
    | LPAREN expression RPAREN
    | functionDesignator
    | unsignedConstant
-   | NOT factor
    | bool
    ;
 
@@ -242,7 +240,6 @@ empty
 structuredStatement
    : compoundStatement
    | ifStatement
-   | repetetiveStatement
    ;
 
 compoundStatement
@@ -255,29 +252,4 @@ statements
 
 ifStatement
    : IF expression THEN statement (: ELSE statement)?
-   ;
-
-repetetiveStatement
-   : whileStatement
-   | forStatement
-   ;
-
-whileStatement
-   : WHILE expression DO statement
-   ;
-
-forStatement
-   : FOR identifier ASSIGN forList DO statement
-   ;
-
-forList
-   : initialValue (TO | DOWNTO) finalValue
-   ;
-
-initialValue
-   : expression
-   ;
-
-finalValue
-   : expression
    ;

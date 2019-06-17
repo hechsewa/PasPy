@@ -13,20 +13,20 @@ import java.io.*;
 
 import static org.antlr.v4.runtime.CharStreams.fromStream;
 
-public class AntlrParser {
+public class PaspyTranspiler {
 
     public static void main(String[] args) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("program.py"));
-        String fileName = "/home/hushmans/Dokumenty/studia/s6/kompilatooor/kompilatory/transpiler/antlr/paspy/src/main/examples/helloworld.pas";
+        String fileName = "/home/hushmans/Dokumenty/studia/s6/kompilatooor/kompilatory/transpiler/antlr/paspy/src/main/examples/example.pas";
         File input = new File(fileName);
         InputStream inputStream = new FileInputStream(input);
         tokens.pascalTokens tokenizer = new tokens.pascalTokens(fromStream(inputStream));
 
         CommonTokenStream tokens = new CommonTokenStream(tokenizer);
-        pascal parser = new pascal(tokens);
+        PascalGrammar parser = new PascalGrammar(tokens);
         ParseTree tree = parser.program();
         ParseTreeWalker walker = new ParseTreeWalker();
-        walker.walk(new pascalBaseListener(bufferedWriter), tree);
+        walker.walk(new PascalGrammarBaseListener(bufferedWriter), tree);
         bufferedWriter.close();
     }
 }
