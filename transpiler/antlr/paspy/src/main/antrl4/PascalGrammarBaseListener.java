@@ -71,11 +71,18 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 		tabs=prevTabs;
 	}
 
-	@Override public void enterConstantDefinition(PascalGrammar.ConstantDefinitionContext ctx) { }
+	@Override public void enterConstantDefinition(PascalGrammar.ConstantDefinitionContext ctx) {
+		writeBuf(ctx.identifier().IDENT().getSymbol().getText(),tabs);
+		writeBuf(" = ", 0);
+	}
 
 	@Override public void exitConstantDefinition(PascalGrammar.ConstantDefinitionContext ctx) { }
 
-	@Override public void enterConstant(PascalGrammar.ConstantContext ctx) { }
+	@Override public void enterConstant(PascalGrammar.ConstantContext ctx) {
+		if(ctx.identifier() != null){
+			writeBuf(ctx.identifier().IDENT().getSymbol().getText(), 0);
+		}
+	}
 
 	@Override public void exitConstant(PascalGrammar.ConstantContext ctx) { }
 
@@ -91,16 +98,29 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	@Override public void exitUnsignedInteger(PascalGrammar.UnsignedIntegerContext ctx) { }
 
 	@Override public void enterUnsignedReal(PascalGrammar.UnsignedRealContext ctx) {
+		writeBuf(ctx.NUM_REAL().getSymbol().getText(),0);
 	}
 
 	@Override public void exitUnsignedReal(PascalGrammar.UnsignedRealContext ctx) { }
 
 	@Override public void enterSign(PascalGrammar.SignContext ctx) {
+		if(ctx.PLUS() != null){
+			writeBuf("+", 0);
+		}
+		if(ctx.MINUS() != null ) {
+			writeBuf( "-", 0);
+		}
 	}
 
 	@Override public void exitSign(PascalGrammar.SignContext ctx) { }
 
 	@Override public void enterBool(PascalGrammar.BoolContext ctx) {
+		if(ctx.FALSE() != null){
+			writeBuf("false", 0);
+		}
+		if(ctx.TRUE() != null){
+			writeBuf("true", 0);
+		}
 	}
 
 	@Override public void exitBool(PascalGrammar.BoolContext ctx) { }
@@ -121,154 +141,96 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 
 	@Override public void exitVariableDeclarationPart(PascalGrammar.VariableDeclarationPartContext ctx) {
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterVariableDeclaration(PascalGrammar.VariableDeclarationContext ctx) {
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitVariableDeclaration(PascalGrammar.VariableDeclarationContext ctx) {
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterProcedureAndFunctionDeclarationPart(PascalGrammar.ProcedureAndFunctionDeclarationPartContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
+	@Override public void enterProcedureAndFunctionDeclarationPart(PascalGrammar.ProcedureAndFunctionDeclarationPartContext ctx) {
+		writeBuf("\n",0);
+		prevTabs=tabs;
+		tabs++;
+	}
+
 	@Override public void exitProcedureAndFunctionDeclarationPart(PascalGrammar.ProcedureAndFunctionDeclarationPartContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterProcedureOrFunctionDeclaration(PascalGrammar.ProcedureOrFunctionDeclarationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitProcedureOrFunctionDeclaration(PascalGrammar.ProcedureOrFunctionDeclarationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterProcedureDeclaration(PascalGrammar.ProcedureDeclarationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitProcedureDeclaration(PascalGrammar.ProcedureDeclarationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterFormalParameterList(PascalGrammar.FormalParameterListContext ctx) { }
+
+	@Override public void enterProcedureDeclaration(PascalGrammar.ProcedureDeclarationContext ctx) {
+		writeBuf("\ndef ", tabs);
+		writeBuf(ctx.identifier().IDENT().getSymbol().getText(),0);
+	}
+
+	@Override public void exitProcedureDeclaration(PascalGrammar.ProcedureDeclarationContext ctx) {
+		tabs=tabs-1;
+	}
+
+	@Override public void enterFormalParameterList(PascalGrammar.FormalParameterListContext ctx) {
+		writeBuf("(",0);
+		List<PascalGrammar.IdentifierContext> list = ctx.identifierList().identifier();
+		if (list != null) {
+			for(int i=0; i<= list.size()-1; i++){
+				writeBuf(ctx.identifierList().identifier(i).IDENT().getSymbol().getText(),0);
+				if(i != list.size()-1){
+					writeBuf(", ",0);
+				}
+			}
+		}
+		writeBuf("):\n",0);
+	}
 
 	@Override public void exitFormalParameterList(PascalGrammar.FormalParameterListContext ctx) { }
 
 	@Override public void enterIdentifierList(PascalGrammar.IdentifierListContext ctx) {
-
 	}
 
 	@Override public void exitIdentifierList(PascalGrammar.IdentifierListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterFunctionDeclaration(PascalGrammar.FunctionDeclarationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFunctionDeclaration(PascalGrammar.FunctionDeclarationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
+	@Override public void enterFunctionDeclaration(PascalGrammar.FunctionDeclarationContext ctx) {
+		writeBuf("def ",tabs);
+		writeBuf(ctx.identifier().IDENT().getSymbol().getText(), 0);
+	}
+
+	@Override public void exitFunctionDeclaration(PascalGrammar.FunctionDeclarationContext ctx) {
+		tabs=tabs-1;
+	}
+
 	@Override public void enterStatement(PascalGrammar.StatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitStatement(PascalGrammar.StatementContext ctx) {
 		writeBuf("\n",0);
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterSimpleStatement(PascalGrammar.SimpleStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitSimpleStatement(PascalGrammar.SimpleStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterAssignmentStatement(PascalGrammar.AssignmentStatementContext ctx) {
 		writeBuf(ctx.variable().identifier().IDENT().getSymbol().getText(),tabs);
 		writeBuf(" = ",0);
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitAssignmentStatement(PascalGrammar.AssignmentStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterVariable(PascalGrammar.VariableContext ctx) {
 		//writeBuf(ctx.identifier().IDENT().getSymbol().getText(),tabs);
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitVariable(PascalGrammar.VariableContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterExpression(PascalGrammar.ExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitExpression(PascalGrammar.ExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
+	@Override public void enterExpression(PascalGrammar.ExpressionContext ctx) {
+	}
+
+	@Override public void exitExpression(PascalGrammar.ExpressionContext ctx) {
+		if (ctx.getParent().getRuleIndex() == 34 && ctx.stop != ctx.getParent().getStop()) {
+			writeBuf(",", 0);
+		}
+	}
+
 	@Override public void enterRelationaloperator(PascalGrammar.RelationaloperatorContext ctx) {
 		if(ctx.EQUAL() != null){
 			writeBuf(" == ", 0);
@@ -289,106 +251,73 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 			writeBuf(" >= ", 0);
 		}
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitRelationaloperator(PascalGrammar.RelationaloperatorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterSimpleExpression(PascalGrammar.SimpleExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitSimpleExpression(PascalGrammar.SimpleExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterAdditiveoperator(PascalGrammar.AdditiveoperatorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
+	@Override public void enterAdditiveoperator(PascalGrammar.AdditiveoperatorContext ctx) {
+		if(ctx.MINUS() != null){
+			writeBuf("-", 0);
+		}
+		if(ctx.PLUS() != null){
+			writeBuf("+", 0);
+		}
+		if(ctx.OR() != null){
+			writeBuf("or", 0);
+		}
+	}
+
 	@Override public void exitAdditiveoperator(PascalGrammar.AdditiveoperatorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterTerm(PascalGrammar.TermContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitTerm(PascalGrammar.TermContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterMultiplicativeoperator(PascalGrammar.MultiplicativeoperatorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
+	@Override public void enterMultiplicativeoperator(PascalGrammar.MultiplicativeoperatorContext ctx) {
+		if(ctx.AND() != null){
+			writeBuf("and", 0);
+		}
+		if(ctx.DIV() != null){
+			writeBuf("//", 0);
+		}
+		if(ctx.SLASH() != null){
+			writeBuf("/", 0);
+		}
+		if(ctx.STAR() != null){
+			writeBuf("*", 0);
+		}
+	}
+
 	@Override public void exitMultiplicativeoperator(PascalGrammar.MultiplicativeoperatorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterSignedFactor(PascalGrammar.SignedFactorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
+	@Override public void enterSignedFactor(PascalGrammar.SignedFactorContext ctx) {
+		if(ctx.PLUS() != null){
+			writeBuf("+",0);
+		}
+		if(ctx.MINUS() != null){
+			writeBuf("-", 0);
+		}
+	}
+
 	@Override public void exitSignedFactor(PascalGrammar.SignedFactorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterFactor(PascalGrammar.FactorContext ctx) {
 		if(ctx.variable() != null){
 			writeBuf(ctx.variable().identifier().IDENT().getSymbol().getText(),0);
 		}
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitFactor(PascalGrammar.FactorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterParameterList(PascalGrammar.ParameterListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
+	@Override public void enterParameterList(PascalGrammar.ParameterListContext ctx) {
+	}
+
 	@Override public void exitParameterList(PascalGrammar.ParameterListContext ctx) {
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterProcedureStatement(PascalGrammar.ProcedureStatementContext ctx) {
 		if(ctx.identifier().IDENT().getSymbol().getText().equals("write") ||
 				ctx.identifier().IDENT().getSymbol().getText().equals("writeln")){
@@ -398,118 +327,76 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 		else {
 			writeBuf(ctx.identifier().IDENT().getSymbol().getText()+"(",tabs);
 		}
-		prevTabs=tabs;
-		tabs=0;
+
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitProcedureStatement(PascalGrammar.ProcedureStatementContext ctx) {
 		if(!ctx.identifier().IDENT().getSymbol().getText().equals("readln")) {
 			writeBuf(")",0);
 		}
-		tabs = prevTabs;
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterEmptyStatement(PascalGrammar.EmptyStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitEmptyStatement(PascalGrammar.EmptyStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterEmpty(PascalGrammar.EmptyContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitEmpty(PascalGrammar.EmptyContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterStructuredStatement(PascalGrammar.StructuredStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitStructuredStatement(PascalGrammar.StructuredStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterCompoundStatement(PascalGrammar.CompoundStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitCompoundStatement(PascalGrammar.CompoundStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterStatements(PascalGrammar.StatementsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitStatements(PascalGrammar.StatementsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void enterIfStatement(PascalGrammar.IfStatementContext ctx) {
+		prevTabs=tabs;
 		writeBuf("if ", tabs);
+		tabs++;
 	}
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitIfStatement(PascalGrammar.IfStatementContext ctx) {
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+	@Override public void enterElifstatement(PascalGrammar.ElifstatementContext ctx) {
+		tabs=prevTabs;
+		writeBuf("elif ", tabs);
+		tabs++;
+	}
+
+	@Override public void exitElifstatement(PascalGrammar.ElifstatementContext ctx) {
+	}
+
+	@Override public void enterElsestatement(PascalGrammar.ElsestatementContext ctx) {
+		tabs=prevTabs;
+		writeBuf("else:\n", tabs);
+		tabs++;
+	}
+
+	@Override public void exitElsestatement(PascalGrammar.ElsestatementContext ctx) {
+		tabs=prevTabs;
+	}
+
+	@Override public void enterIfexpression(PascalGrammar.IfexpressionContext ctx) {
+	}
+
+	@Override public void exitIfexpression(PascalGrammar.IfexpressionContext ctx) {
+		writeBuf(":\n", 0);
+	}
+
+
 	@Override public void enterEveryRule(ParserRuleContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitEveryRule(ParserRuleContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void visitTerminal(TerminalNode node) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void visitErrorNode(ErrorNode node) { }
 }

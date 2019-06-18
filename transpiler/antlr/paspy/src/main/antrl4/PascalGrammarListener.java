@@ -427,4 +427,34 @@ public interface PascalGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitIfStatement(PascalGrammar.IfStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PascalGrammar#elifstatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterElifstatement(PascalGrammar.ElifstatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PascalGrammar#elifstatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitElifstatement(PascalGrammar.ElifstatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PascalGrammar#elsestatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterElsestatement(PascalGrammar.ElsestatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PascalGrammar#elsestatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitElsestatement(PascalGrammar.ElsestatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PascalGrammar#ifexpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterIfexpression(PascalGrammar.IfexpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PascalGrammar#ifexpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitIfexpression(PascalGrammar.IfexpressionContext ctx);
 }
