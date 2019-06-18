@@ -193,5 +193,13 @@ statements
    ;
 
 ifStatement
-   : IF expression THEN statement (: ELSE statement)?
+   : IF expression THEN statement (:elifstatement)* (:elsestatement)?
+   ;
+
+elifstatement
+   : ELSE IF expression THEN statement
+   ;
+
+elsestatement
+   : ELSE statement
    ;

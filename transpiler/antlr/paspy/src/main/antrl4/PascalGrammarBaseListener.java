@@ -1,5 +1,5 @@
 // Generated from PascalGrammar.g4 by ANTLR 4.7.2
-
+package main.antrl4;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -17,8 +17,8 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 		this.bufferedWriter = bufferedWriter;
 	}
 
-	private void writeBuf(String s) {
-		for(int i =0; i<tabs; i++){
+	private void writeBuf(String s, int tabCount) {
+		for(int i =0; i<tabCount; i++){
 			try {
 				bufferedWriter.write("\t");
 			} catch(IOException e){
@@ -37,20 +37,20 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	}
 
 	@Override public void exitProgram(PascalGrammar.ProgramContext ctx) {
-		writeBuf("\nif __name__ == \"__main__\":\n");
-		tabs++;
-		writeBuf(ctx.programHeading().identifier().IDENT().getSymbol().getText()+"():");
-		tabs=prevTabs;
+		writeBuf("\nif __name__ == \"__main__\":\n", 0);
+		writeBuf(ctx.programHeading().identifier().IDENT().getSymbol().getText()+"()", 1);
 	}
 
 	@Override public void enterProgramHeading(PascalGrammar.ProgramHeadingContext ctx) {
-		writeBuf("def "+ctx.identifier().IDENT().getSymbol().getText());
-		writeBuf("():\n");
+		writeBuf("def "+ctx.identifier().IDENT().getSymbol().getText(),0);
 	}
 
-	@Override public void exitProgramHeading(PascalGrammar.ProgramHeadingContext ctx) { }
+	@Override public void exitProgramHeading(PascalGrammar.ProgramHeadingContext ctx) {
+		writeBuf("():\n",0);
+	}
 
 	@Override public void enterIdentifier(PascalGrammar.IdentifierContext ctx) {
+		//writeBuf(ctx.IDENT().getSymbol().getText(),0);
 	}
 
 	@Override public void exitIdentifier(PascalGrammar.IdentifierContext ctx) { }
@@ -65,7 +65,6 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 
 	@Override public void enterConstantDefinitionPart(PascalGrammar.ConstantDefinitionPartContext ctx) {
 		tabs++;
-
 	}
 
 	@Override public void exitConstantDefinitionPart(PascalGrammar.ConstantDefinitionPartContext ctx) {
@@ -86,6 +85,7 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	@Override public void exitUnsignedNumber(PascalGrammar.UnsignedNumberContext ctx) { }
 
 	@Override public void enterUnsignedInteger(PascalGrammar.UnsignedIntegerContext ctx) {
+		writeBuf(ctx.NUM_INT().getSymbol().getText(),0);
 	}
 
 	@Override public void exitUnsignedInteger(PascalGrammar.UnsignedIntegerContext ctx) { }
@@ -106,6 +106,7 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	@Override public void exitBool(PascalGrammar.BoolContext ctx) { }
 
 	@Override public void enterString(PascalGrammar.StringContext ctx) {
+		writeBuf(ctx.STRING_LITERAL().getSymbol().getText(),0);
 	}
 
 	@Override public void exitString(PascalGrammar.StringContext ctx) { }
@@ -119,7 +120,6 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	}
 
 	@Override public void exitVariableDeclarationPart(PascalGrammar.VariableDeclarationPartContext ctx) {
-		writeBuf("\n");
 	}
 	/**
 	 * {@inheritDoc}
@@ -127,29 +127,6 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void enterVariableDeclaration(PascalGrammar.VariableDeclarationContext ctx) {
-		tabs++;
-		prevTabs=tabs;
-		List<PascalGrammar.IdentifierContext> list = ctx.identifierList().identifier();
-		if(list != null){
-			if(ctx.type().BOOLEAN() != null){
-				writeBuf(ctx.type().BOOLEAN().getSymbol().getText());
-			} else if (ctx.type().CHAR() != null) {
-				writeBuf(ctx.type().CHAR().getSymbol().getText());
-			} else if (ctx.type().INTEGER() != null) {
-				writeBuf(ctx.type().INTEGER().getSymbol().getText());
-			} else if (ctx.type().REAL() != null) {
-				writeBuf(ctx.type().REAL().getSymbol().getText());
-			} else if (ctx.type().STRING() != null) {
-				writeBuf(ctx.type().STRING().getSymbol().getText());
-			}
-			tabs=0;
-			writeBuf(" ");
-			//get all elements
-			for(int i=0; i<list.size()-1; i++){
-				writeBuf(ctx.identifierList().identifier(i).IDENT().getSymbol().getText()+", ");
-			}
-			writeBuf(ctx.identifierList().identifier(list.size()-1).IDENT().getSymbol().getText());
-		}
 	}
 	/**
 	 * {@inheritDoc}
@@ -157,8 +134,6 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitVariableDeclaration(PascalGrammar.VariableDeclarationContext ctx) {
-		tabs=prevTabs;
-		writeBuf("\n");
 	}
 	/**
 	 * {@inheritDoc}
@@ -202,23 +177,13 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void enterFormalParameterList(PascalGrammar.FormalParameterListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
 	@Override public void exitFormalParameterList(PascalGrammar.FormalParameterListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterIdentifierList(PascalGrammar.IdentifierListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
+
+	@Override public void enterIdentifierList(PascalGrammar.IdentifierListContext ctx) {
+
+	}
+
 	@Override public void exitIdentifierList(PascalGrammar.IdentifierListContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -243,7 +208,9 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatement(PascalGrammar.StatementContext ctx) { }
+	@Override public void exitStatement(PascalGrammar.StatementContext ctx) {
+		writeBuf("\n",0);
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -261,7 +228,10 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssignmentStatement(PascalGrammar.AssignmentStatementContext ctx) { }
+	@Override public void enterAssignmentStatement(PascalGrammar.AssignmentStatementContext ctx) {
+		writeBuf(ctx.variable().identifier().IDENT().getSymbol().getText(),tabs);
+		writeBuf(" = ",0);
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -273,7 +243,9 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariable(PascalGrammar.VariableContext ctx) { }
+	@Override public void enterVariable(PascalGrammar.VariableContext ctx) {
+		//writeBuf(ctx.identifier().IDENT().getSymbol().getText(),tabs);
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -297,7 +269,26 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRelationaloperator(PascalGrammar.RelationaloperatorContext ctx) { }
+	@Override public void enterRelationaloperator(PascalGrammar.RelationaloperatorContext ctx) {
+		if(ctx.EQUAL() != null){
+			writeBuf(" == ", 0);
+		}
+		if(ctx.LE() != null){
+			writeBuf(" <= ", 0);
+		}
+		if(ctx.LT() != null){
+			writeBuf(" < ", 0);
+		}
+		if(ctx.NOT_EQUAL() != null){
+			writeBuf(" != ", 0);
+		}
+		if(ctx.GT() != null){
+			writeBuf(" > ", 0);
+		}
+		if(ctx.GE() != null){
+			writeBuf(" >= ", 0);
+		}
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -369,7 +360,11 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFactor(PascalGrammar.FactorContext ctx) { }
+	@Override public void enterFactor(PascalGrammar.FactorContext ctx) {
+		if(ctx.variable() != null){
+			writeBuf(ctx.variable().identifier().IDENT().getSymbol().getText(),0);
+		}
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -397,11 +392,11 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	@Override public void enterProcedureStatement(PascalGrammar.ProcedureStatementContext ctx) {
 		if(ctx.identifier().IDENT().getSymbol().getText().equals("write") ||
 				ctx.identifier().IDENT().getSymbol().getText().equals("writeln")){
-			writeBuf("print(");
+			writeBuf("print(",tabs);
 		} else if (ctx.identifier().IDENT().getSymbol().getText().equals("readln")) {
 		}
 		else {
-			writeBuf(ctx.identifier().IDENT().getSymbol().getText()+"(");
+			writeBuf(ctx.identifier().IDENT().getSymbol().getText()+"(",tabs);
 		}
 		prevTabs=tabs;
 		tabs=0;
@@ -413,7 +408,7 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 */
 	@Override public void exitProcedureStatement(PascalGrammar.ProcedureStatementContext ctx) {
 		if(!ctx.identifier().IDENT().getSymbol().getText().equals("readln")) {
-			writeBuf(")\n");
+			writeBuf(")",0);
 		}
 		tabs = prevTabs;
 	}
@@ -482,13 +477,16 @@ public class PascalGrammarBaseListener implements PascalGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIfStatement(PascalGrammar.IfStatementContext ctx) { }
+	@Override public void enterIfStatement(PascalGrammar.IfStatementContext ctx) {
+		writeBuf("if ", tabs);
+	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIfStatement(PascalGrammar.IfStatementContext ctx) { }
+	@Override public void exitIfStatement(PascalGrammar.IfStatementContext ctx) {
+	}
 
 	/**
 	 * {@inheritDoc}

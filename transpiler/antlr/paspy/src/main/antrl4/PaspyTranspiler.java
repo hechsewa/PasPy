@@ -2,7 +2,7 @@
 download jar from antlr website
 click PPM on antlr folder, Open Module Settings -> Dependencies -> (+) -> Jar on dependencies -> (find the jar)
  */
-
+package main.antrl4;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -17,8 +17,7 @@ public class PaspyTranspiler {
 
     public static void main(String[] args) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("program.py"));
-        String fileName = "/home/hushmans/Dokumenty/studia/s6/kompilatooor/kompilatory/transpiler/antlr/" +
-                "paspy/src/main/examples/example.pas";
+        String fileName = "D:\\studia\\s6\\kompilatory\\kompilatory\\transpiler\\antlr\\paspy\\src\\main\\examples\\if.pas";
         File input = new File(fileName);
         InputStream inputStream = new FileInputStream(input);
         tokens.pascalTokens tokenizer = new tokens.pascalTokens(fromStream(inputStream));
