@@ -9,9 +9,9 @@ It doesn't support all Pascal syntax! Not allowed: files, for, while, arrays, po
 Due to Pascal's and Python's different structures, it converts only simple code: vars, procedures, functions, arithmetics, prints and if-else statements. 
 
 
-Simple pascal grammar can be found [here.](https://github.com/hechsewa/kompilatory/blob/simple/transpiler/antlr/paspy/src/main/antrl4/PascalGrammar.g4)
+Simple pascal grammar can be found [here.](https://github.com/hechsewa/kompilatory/blob/master/transpiler/antlr/paspy/src/main/antrl4/PascalGrammar.g4)
 
-Simple pascal tokens can be found [here.](https://github.com/hechsewa/kompilatory/blob/simple/transpiler/antlr/paspy/src/main/antrl4/pascalTokens.g4)
+Simple pascal tokens can be found [here.](https://github.com/hechsewa/kompilatory/blob/master/transpiler/antlr/paspy/src/main/antrl4/pascalTokens.g4)
 
 ## UML diagram 
 
@@ -46,6 +46,6 @@ Build project module. Set the source .pas file in the configuration settings. Ri
 
 ## Examples 
 
-Example translations can be found [here.](https://github.com/hechsewa/kompilatory/tree/simple/transpiler/antlr/paspy/src/main/examples) 
+Example translations can be found [here.](https://github.com/hechsewa/kompilatory/tree/master/transpiler/antlr/paspy/src/main/examples) 
 
 Created by Ewa Hechsman & Laura Żuchowska as an assignment for Theory of compiling and Compilers course (AGH University of Science and Technology), 2019. 
