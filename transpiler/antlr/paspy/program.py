@@ -1,19 +1,20 @@
-def ifprog():
-	number = 50
-	print('If this was a grade, you would receive a grade of:  ')
-	if number >= 90:
-		print('A')
-	elif number >= 80:
-		print('B')
-	elif number >= 70:
-		print('C')
-	elif number >= 60:
-		print('D')
-	else:
-		print('F')
+def add():
+		size = 5
+	def max(num1, num2):
+		if num1 > num2:
+			result = num1
+		else:
+			result = num2
 
+		max = result
+
+	i = 4
+	j = 6
+	max(i,j)
+	print('Result:')
+	print(max)
 	print()
 
 
 if __name__ == "__main__":
-	ifprog()
+	add()

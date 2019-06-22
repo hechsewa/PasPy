@@ -13,7 +13,7 @@ var
 (* ***************************    adder    ********************************** *)
 
 (* function returning the max between two numbers *)
-function max(i, j: integer): integer;
+function max(num1, num2: integer): integer;
 var
    (* local variable declaration *)
    result: integer;
