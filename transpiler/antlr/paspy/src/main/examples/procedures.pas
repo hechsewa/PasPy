@@ -1,4 +1,4 @@
-program add;
+program procedures;
 
 (*** Simple program to add 2 integers ***)
 
